@@ -141,7 +141,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y $(TargetPath)  $(SolutionDir)..\..\bin\M2000X.dll
+      <Command>xcopy /Y $(TargetPath)  $(SolutionDir)..\..\bin\M2000X.real.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
