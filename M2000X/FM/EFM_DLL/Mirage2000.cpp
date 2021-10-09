@@ -208,8 +208,8 @@ void ed_fm_simulate_cfd()
 	}
 	double cos_alpha = (cos(state.alpha));
 	double sin_alpha = (sin(state.alpha));
-	double cos_beta = (cos(state.alpha));
-	double sin_beta = (sin(state.alpha));
+	double cos_beta = (cos(state.beta));
+	double sin_beta = (sin(state.beta));
 
 	/********** calculating aerodynamic forces*********************/
 	cfd.calc_coeffeients(state);
