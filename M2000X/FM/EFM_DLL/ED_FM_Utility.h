@@ -120,65 +120,6 @@ struct Quaternion
 	double w;
 };
 
-class Matrix
-{
-	int m_row;
-	int m_col;
-	double* m_pData = NULL;
-	//std::vector<std::vector<double>> data;
-public:
-	Matrix(size_t row, size_t col) : m_row(row), m_col(col) { m_pData = new double[row * col]; memset(m_pData, 0, row * col); };
-	virtual ~Matrix() { delete[]m_pData; };
-	int rows() { return m_row; };
-	int columns() { return m_col; };
-	bool set(size_t row, size_t col, double val) { 
-		if (row > m_row || col > m_col) 
-			return false;
-		m_pData[col + (row * m_col)] = val;
-		return true;
-	}
-	double get(size_t row, size_t col) { 
-		if (row > m_row || col > m_col) 
-			return 0.0;
-		return m_pData[col + (row * m_col)];
-	}
-//	const std::vector<double>& operator[](int i) { return data[i]; };
-	double operator[](int i) { return m_pData[i]; }
-	void operator-(double val) {
-		auto total = m_row * m_col;
-		for (int i=0; i < total ; i++)
-			m_pData[i] -= val;
-	};
-	void operator+(double val) { 
-		auto total = m_row * m_col;
-		for (int i=0; i < total; i++)
-			m_pData[i] += val;
-	};
-	void operator*(double val ) {
-		auto total = m_row * m_col;
-		for (int i=0; i < total; i++)
-			m_pData[i] *= val;
-	};
-	Matrix operator*(Matrix& B) {
-		Matrix result(rows(), B.columns());
-		int row = 0;
-		int col = 0;
-		double temp = 0.0;
-		for (size_t Ri = 0; Ri < rows(); Ri++)
-		{
-			for (size_t Rj = 0; Rj < B.columns(); Rj++)
-			{
-				temp = 0.0;
-				for (size_t j = 0; j < columns(); j++)
-					temp += get(Ri,j) * B.get(Rj, j);
-				//
-				result.set(Ri, Rj, temp);
-			}
-		};
-		return result;
-	};
-};
-
 class _Matrix33
 {
 	std::vector<std::vector<double>> data;
