@@ -1,6 +1,6 @@
 ## Generic Engine Model
-The generic turbojet engine is a state machine that uses states to control the operation of the pilot interations with the engine in different states, RPM, core temperatures and thrust generated. The engine requires input from the following sub systems: Electrical for power and Fuel, and in turn creates output to the Hydraulic, Phenumatic, Electric sub systems and Aerodynamics in the form of Thrust. The Engine igniters draw power from the electrical system on the AC and DC busses and has access to the fuel tank. 
-In addition, the engine connects mechanical gears powering hydraulic and phenumatic compressors.
+The generic turbojet engine is a state machine that uses states to control the operation of the pilot interations with the engine in different states, RPM, core temperatures and thrust generated. The engine requires input from the following sub systems: Electrical for power and Fuel, and in turn creates output to the Hydraulic, Phenumatic, Electric sub systems and Aerodynamics in the form of Thrust. The Engine igniters draw power from the electrical system on the AC and DC busses and is connected to a common fuel tank that is feed from other plane fuel tanks. Fuel pumps are used to pressurize the fuel lines to delivery the fuel to the engine for combustion.
+In addition, the engine supplies bleed air to the hydraulic and phenumatic compressors sub-systems.
 ![This is an image](https://github.com/KfirMod/IAF_KFIR/blob/master/assests/iai-kfir_engine_diagram.jpg)
 
 **Engine state Machine**
@@ -15,7 +15,7 @@ The **Strarting** state uses the following logic:
 1. The engine is receiving electrical power DC/AC from at one bus for the engine ignitors. 
 2. external air pressure (from ground equipment or air) turns the compressor to between RPM 5% - 25% , external air push RPM (check?)
 3. Throttle from OFF to IDLE (by moving the throttle forward pass the 0.2 mark and bring it back to 0) - for air-start (?), moving the throttle to IDLE causes the engine to consume fuel the starting process causing the RPM (RPM starting spool time) and core temperature (need chart) to increase.
-4. the engine will "catch" by stay in the **Starting** state until the RPM covonor stabalizes the RPM to the 65% RPM_IDLE value (5000)
+4. the engine will "catch" by stay in the **Starting** state until the RPM govenor stabalizes the RPM to the 65% RPM_IDLE value (5000)
 
 **Failures**
 1. if no electric power, there is no ignition flow is injected but not burnt , no temperature rise or RPM engine "catching".
